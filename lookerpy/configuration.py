@@ -21,6 +21,7 @@ Copyright 2016 SmartBear Software
 from __future__ import absolute_import
 import base64
 import urllib3
+import os
 
 try:
     import httplib
@@ -64,7 +65,10 @@ class Configuration(object):
 
         # Authentication Settings
         # dict to store API key(s)
-        self.api_key = {}
+        self.api_key = {
+           client_id: os.environ['LOOKER_ID'],
+           client_secret: os.environ['LOOKER_SECRET']
+        }
         # dict to store API prefix (e.g. Bearer)
         self.api_key_prefix = {}
         # Username for HTTP basic authentication
